@@ -1,0 +1,16 @@
+#VRML_SIM R2022a utf8
+WorldInfo {
+}
+Viewpoint {
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+RectangleArena {
+  floorSize 2 2
+}
+Irb4600-40 {
+  staticBase TRUE
+  controller "<extern>"
+}

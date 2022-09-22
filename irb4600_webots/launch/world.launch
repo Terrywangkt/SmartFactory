@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+    <param name ="use_sim_time" value="true"/>
+    <include file="$(find webots_ros)/launch/webots.launch">
+        <arg name="mode" value="realtime"/>
+        <arg name="world" value="$(find irb4600_webots)/worlds/irb4600.wbt"/>
+    </include>
+</launch>

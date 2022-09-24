@@ -3,10 +3,10 @@
     <param name ="use_sim_time" value="true"/>
     <include file="$(find webots_ros)/launch/webots.launch">
         <arg name="mode" value="realtime"/>
-        <arg name="world" value="$(find irb4600_webots)/worlds/irb4600.wbt"/>
+        <arg name="world" value="$(find gripper_webots)/worlds/gripper.wbt"/>
     </include>
     <arg name="auto-close" default="false" doc="Startup mode"/>
-    <include file="$(find irb4600_webots)/launch/abb_controller.launch">
+    <include file="$(find gripper_webots)/launch/gripper_controller.launch">
         <arg name="auto-close" value="$(arg auto-close)"/>
     </include>
 </launch>

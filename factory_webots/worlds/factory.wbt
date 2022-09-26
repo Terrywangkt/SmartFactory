@@ -1,0 +1,162 @@
+#VRML_SIM R2022a utf8
+WorldInfo {
+}
+Viewpoint {
+  orientation 0.4340534566603312 0.32065117060499404 -0.8418909807990966 2.028800701750511
+  position 2.7675043064594687 0.9864363174099546 5.998790724693113
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+Floor {
+}
+Irb4600-40 {
+  controller "<extern>"
+  handSlot [
+    Gripper {
+      translation 0 0 -0.05
+      rotation 1 0 0 1.57
+    }
+  ]
+  staticBase TRUE
+}
+ConveyorBelt {
+  translation 1.5 0 0
+  rotation 0 0 1 1.57159
+  size 3 1.3 0.1
+  borderThickness 0
+}
+Robot {
+  translation 1.5 2 0.095
+  rotation 0 0 1 1.5708
+  children [
+    Track {
+      children [
+        Shape {
+          appearance Asphalt {
+            textureTransform TextureTransform {
+            }
+          }
+          geometry DEF B0 Box {
+            size 1 1.3 0.01
+          }
+        }
+      ]
+      boundingObject USE B0
+      physics Physics {
+      }
+      device [
+        LinearMotor {
+          name "belt_motor"
+        }
+      ]
+      textureAnimation 0.5 0
+    }
+    DEF T0 Transform {
+      translation 0 0 -0.05
+      children [
+        Shape {
+          appearance CorrugatedMetal {
+          }
+          geometry Box {
+            size 1 1.3 0.09
+          }
+        }
+      ]
+    }
+    DEF T1 Transform {
+      translation 0 -0.655 -0.02
+      children [
+        Shape {
+          appearance Asphalt {
+          }
+          geometry Box {
+            size 1 0.01 0.15
+          }
+        }
+      ]
+    }
+    DEF T2 Transform {
+      translation 0.505 0 -0.02
+      rotation 0 0 1 1.5708
+      children [
+        Shape {
+          appearance Asphalt {
+          }
+          geometry Box {
+            size 1.3 0.01 0.15
+          }
+        }
+      ]
+    }
+    DistanceSensor {
+      translation -0.42 -0.64 0.02
+      rotation 0 0 1 1.5708
+      lookupTable [
+        0 0 0
+        1.2 1000 0
+      ]
+    }
+  ]
+  boundingObject Group {
+    children [
+      USE T0
+      USE T1
+      USE T2
+    ]
+  }
+  recognitionColors [
+    0 0 0
+  ]
+  controller "conveyor_belt"
+  controllerArgs [
+    "0.5"
+    ""
+  ]
+}
+Robot {
+  translation 1.5 0 2.4
+  rotation 0 1 0 1.57
+  children [
+    Camera {
+      width 480
+      height 320
+      far 2.3
+    }
+    RangeFinder {
+      width 480
+      height 320
+      maxRange 2.3
+    }
+  ]
+  name "cameras"
+}
+ConveyorBelt {
+  translation 1.49 -3 0
+  rotation 0 0 1 1.57
+  name "conveyor belt 1"
+  size 3 0.5 0.1
+  borderThickness 0
+  speed 0.1
+}
+CocaColas {
+  translation 1.43 -2.8 0.1
+  rotation 0 0 1 1.5708
+  name "c1"
+}
+CocaColas {
+  translation 1.43 -2 0.1
+  rotation 0 0 1 1.5708
+  name "c2"
+}
+CocaColas {
+  translation 1.43 -3.6 0.1
+  rotation 0 0 1 1.5708
+  name "C3"
+}
+CocaColas {
+  translation 1.43 -4.4 0.1
+  rotation 0 0 1 1.5708
+  name "C4"
+}

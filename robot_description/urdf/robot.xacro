@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<robot name="robot" xmlns:xacro="http://ros.org/wiki/xacro">
+    <xacro:include filename="$(find irb4600_description)/urdf/irb4600_40_255_macro.xacro"/>
+    <xacro:include filename="$(find gripper_description)/urdf/gripper.urdf.xacro"/>
+    <xacro:property name="prefix" value="" />
+    <xacro:abb_irb4600_40_255 prefix="${prefix}"/>
+    <xacro:gripper prefix="${prefix}"/>
+    <joint name="tools" type="fixed">
+        <origin xyz="0 0 0" rpy="0 0 -1.5707"/>
+        <parent link="${prefix}tools"/>
+        <child link="${prefix}palm_link"/>
+    </joint>
+</robot>

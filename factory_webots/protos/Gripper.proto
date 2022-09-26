@@ -1,0 +1,212 @@
+#VRML_SIM R2022a utf8
+PROTO Gripper [
+  field SFVec3f    translation     0 0 0                 # Is `Transform.translation`.
+  field SFRotation rotation        0 0 1 0               # Is `Transform.rotation`.
+  field SFString   name            "gripper"         # Is `Solid.name`.
+]
+{
+Solid {
+  translation IS translation
+  rotation IS rotation
+  children [
+    DEF G0 Group {
+      children [
+        Transform {
+          translation 0 0.022 -0.022
+          rotation 1 0 0 1.5707
+          children [
+            Shape {
+              appearance DEF BLACK PBRAppearance {
+                baseColor 0.0705882 0.0705882 0.0705882
+                roughness 0.4
+                metalness 0
+              }
+              geometry Box {
+                size 0.315 0.01 0.043419
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0 0.022 0.022
+          rotation 1 0 0 1.5707
+          children [
+            Shape {
+              appearance DEF BLACK PBRAppearance {
+                baseColor 0.0705882 0.0705882 0.0705882
+                roughness 0.4
+                metalness 0
+              }
+              geometry Box {
+                size 0.315 0.01 0.043419
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0.154 0.022 0
+          rotation 1 0 0 1.5707
+          children [
+            Shape {
+              appearance USE BLACK
+              geometry Box {
+                size 0.007 0.05 0.042227
+              }
+            }
+          ]
+        }
+        Transform {
+          translation -0.154 0.022 0
+          rotation 1 0 0 1.5707
+          children [
+            Shape {
+              appearance USE BLACK
+              geometry Box {
+                size 0.007 0.05 0.042227
+              }
+            }
+          ]
+        }
+        Transform {
+          translation 0 0.026 0
+          children [
+            Shape {
+              appearance USE BLACK
+              geometry Box {
+                size 0.027 0.0341 0.035
+              }
+            }
+          ]
+        }
+      ]
+    }
+    SliderJoint {
+      jointParameters JointParameters {
+        axis -1 0 0
+      }
+      device [
+        LinearMotor {
+          name "left_finger_joint"
+          maxPosition 0.12
+          maxForce 300
+        }
+        PositionSensor {
+          name "left_finger_joint_sensor"
+        }
+      ]
+      endPoint Solid {
+        translation -0.021 0.026 0
+        rotation 1 0 0 1.5707
+        children [
+          Shape {
+            appearance DEF METAL PBRAppearance {
+              baseColorMap ImageTexture {
+                url [
+                  "https://raw.githubusercontent.com/cyberbotics/webots/R2022a/projects/default/worlds/textures/metal.jpg"
+                ]
+              }
+              roughness 0.2
+            }
+            geometry Box {
+              size 0.015 0.034 0.036
+            }
+          }
+          Transform {
+            translation 0 0 -0.0653
+            children [
+              Shape {
+                appearance DEF BLACK_APPEARANCE PBRAppearance {
+                  baseColor 0.0705882 0.0705882 0.0705882
+                  roughness 0.4
+                  metalness 0
+                }
+                geometry Box {
+                  size 0.015 0.035 0.095
+                }
+              }
+            ]
+          }
+        ]
+        name "left_finger"
+        boundingObject Transform {
+          translation 0 0 -0.0653
+          children [
+            Shape {
+              geometry Box {
+                size 0.015 0.035 0.095
+              }
+            }
+          ]
+        }
+        physics Physics {
+          density -1
+          mass 0.1
+        }
+      }
+    }
+    SliderJoint {
+      jointParameters JointParameters {
+        axis 1 0 0
+      }
+      device [
+        LinearMotor {
+          name "right_finger_joint"
+          maxPosition 0.12
+          maxForce 300
+        }
+        PositionSensor {
+          name "right_finger_joint_sensor"
+        }
+      ]
+      endPoint Solid {
+        translation 0.021 0.026 0
+        rotation 1 0 0 1.5707
+        children [
+          Shape {
+            appearance USE METAL
+            geometry Box {
+              size 0.015 0.034 0.036
+            }
+          }
+          Transform {
+            translation 0 0 -0.0653
+            children [
+              Shape {
+                appearance DEF BLACK_APPEARANCE PBRAppearance {
+                  baseColor 0.0705882 0.0705882 0.0705882
+                  roughness 0.4
+                  metalness 0
+                }
+                geometry Box {
+                  size 0.015 0.035 0.095
+                }
+              }
+            ]
+          }
+        ]
+        name "right_finger"
+        boundingObject Transform {
+          translation 0 0 -0.0653
+          children [
+            Shape {
+              geometry Box {
+                size 0.015 0.035 0.095
+              }
+            }
+          ]
+        }
+        physics Physics {
+          density -1
+          mass 0.1
+        }
+      }
+    }
+  ]
+  name IS name
+  boundingObject USE G0
+  physics Physics {
+    density -1
+    mass 1
+  }
+}
+}

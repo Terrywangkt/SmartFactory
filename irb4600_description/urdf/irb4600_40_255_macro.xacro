@@ -175,11 +175,11 @@
     </joint>
 
     <!-- ROS-Industrial 'tool0' frame: all-zeros tool frame -->
-    <link name="${prefix}tool0" />
-    <joint name="${prefix}wrist_3_link-tool0" type="fixed">
+    <link name="${prefix}tools" />
+    <joint name="${prefix}wrist_3_link-tool" type="fixed">
       <origin xyz="0 0 0" rpy="0 ${radians(90)} 0" />
       <parent link="${prefix}flange" />
-      <child link="${prefix}tool0" />
+      <child link="${prefix}tools" />
     </joint>
   </xacro:macro>
 </robot>

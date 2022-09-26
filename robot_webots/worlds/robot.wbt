@@ -14,6 +14,7 @@ RectangleArena {
 }
 Irb4600-40 {
   controller "<extern>"
+  staticBase TRUE
   handSlot [
     Gripper {
       translation 0 0 -0.05

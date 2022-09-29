@@ -5,8 +5,8 @@
         <arg name="mode" value="pause"/>
         <arg name="world" value="$(find factory_webots)/worlds/factory.wbt"/>
     </include>
-    <arg name="auto-close" default="false" doc="Startup mode"/>
-    <include file="$(find factory_webots)/launch/robot_controller.launch">
-        <arg name="auto-close" value="$(arg auto-close)"/>
-    </include>
+<!--    <arg name="auto-close" default="false" doc="Startup mode"/>-->
+<!--    <include file="$(find factory_webots)/launch/robot_controller.launch">-->
+<!--        <arg name="auto-close" value="$(arg auto-close)"/>-->
+<!--    </include>-->
 </launch>

@@ -6,7 +6,7 @@
         <arg name="world" value="$(find robot_webots)/worlds/robot.wbt"/>
     </include>
     <arg name="auto-close" default="false" doc="Startup mode"/>
-    <include file="$(find robot_webots)/launch/robot_controller.launch">
-        <arg name="auto-close" value="$(arg auto-close)"/>
-    </include>
+<!--    <include file="$(find robot_webots)/launch/robot_controller.launch">-->
+<!--        <arg name="auto-close" value="$(arg auto-close)"/>-->
+<!--    </include>-->
 </launch>

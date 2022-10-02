@@ -1,0 +1,14 @@
+<launch>
+
+    <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find irb4600_description)/urdf/irb4600_40_255.xacro'"/>
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+<!--    <arg name="auto-close" default="false" doc="Startup mode"/>-->
+
+    <node name="joint_state_publisher" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" >
+            <param name="use_gui" value="true"/>
+        </node>
+<!--    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find irb4600_description)/cfg/rviz.rviz" required="true" />-->
+<!--    <include file="$(find irb4600_webots)/launch/abb_controller.launch">-->
+<!--        <arg name="auto-close" value="$(arg auto-close)"/>-->
+<!--    </include>-->
+</launch>

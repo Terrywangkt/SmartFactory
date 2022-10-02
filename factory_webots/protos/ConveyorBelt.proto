@@ -15,6 +15,7 @@ PROTO ConveyorBelt [
   field SFFloat    speed            0.5                                                                  # Defines the rubber band speed in meters per second.
   field SFFloat    acceleration     -1                                                                   # Defines the acceleration of the conveyor belt.
   field SFFloat    timer            0.0                                                                  # Defines for how long the conveyor belt should move (it will move forever if set to 0).
+  field SFString   controller       "conveyor_belt"
 ]
 {
   %<
@@ -36,7 +37,7 @@ PROTO ConveyorBelt [
     translation IS translation
     rotation IS rotation
     name IS name
-    # controller "conveyor_belt"
+    controller IS controller
     controllerArgs [
       %<= '"' + fields.speed.value + '"' >%
       %<= '"' + fields.timer.value + '"' >%

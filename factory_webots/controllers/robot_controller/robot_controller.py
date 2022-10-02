@@ -34,12 +34,19 @@ if not rospy.get_param('use_sim_time', False):
     rospy.logwarn('use_sim_time is not set!')
 
 timestep = int(robot.getBasicTimeStep())
+ds = robot.getDevice("distance sensor")
+ds.enable(timestep)
 while robot.step(timestep) != -1 and not rospy.is_shutdown():
     # pulish simulation clock
     armJointStatePublisher.publish()
     armTrajectoryFollower.update()
     gripperJointStatePublisher.publish()
     gripperTrajectoryFollower.update()
+    if (ds.getValue()<500):
+        rospy.set_param("inGripper",True)
+    else:
+        rospy.set_param("inGripper",False)
+        
     msg = Clock()
     time = robot.getTime()
     msg.clock.secs = int(time)

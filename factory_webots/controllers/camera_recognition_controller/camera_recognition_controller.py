@@ -38,20 +38,31 @@ while robot.step(timestep) != -1:
         nums = camera.getRecognitionNumberOfObjects()
         objects = camera.getRecognitionObjects()
         # print(nums)
-        for i in range(nums):
-            item = objects[i]
+        # for i in range(nums):
+            # item = objects[i]
+            # target = [1.5,0,0.15]
+        # print(item)
+        # print(item.get_position())
+        # print(item.get_orientation())
+        # print(item.get_size())
+        # print(item.get_position_on_image())
+        # print(item.get_size_on_image())
+        # pos = item.get_position()
+        # target[0]= target[0]+pos[2]
+        # target[1]= target[1]+pos[1]
+        # target[2]= target[2]
+        # print(target)
+        # rospy.set_param("target",target)
+        if (nums > 0):
+            item = objects[-1]
             target = [1.5,0,0.15]
-            # print(item)
-            print(item.get_position())
-            # print(item.get_orientation())
-            # print(item.get_size())
-            # print(item.get_position_on_image())
-            # print(item.get_size_on_image())
             pos = item.get_position()
             target[0]= target[0]+pos[2]
             target[1]= target[1]+pos[1]
             target[2]= target[2]
-            print(target)
-            
-
+            # print(target)
+            rospy.set_param("target",target)
+        else:
+            if rospy.has_param("target"):
+                rospy.delete_param("target")
 # Enter here exit cleanup code.

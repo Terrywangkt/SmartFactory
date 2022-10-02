@@ -13,7 +13,7 @@ RectangleArena {
   floorSize 2 2
 }
 Irb4600-40 {
-  controller "robot_controller"
+  controller "<extern>"
   staticBase TRUE
   handSlot [
     Gripper {
